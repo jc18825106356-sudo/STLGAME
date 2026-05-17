@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cgkg2gtdcmkg7"]
+
+[ext_resource type="Theme" uid="uid://d337qmiy1w5qb" path="res://resources/ui_theme.tres" id="1_dlfns"]
+[ext_resource type="Script" uid="uid://dwo7vewd4d3h0" path="res://scene/ui/time_ui.gd" id="2_hgu7q"]
+
+[node name="TimeUI" type="Control" unique_id=1511361725]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme = ExtResource("1_dlfns")
+script = ExtResource("2_hgu7q")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1949989060]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1519570724]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/PanelContainer" unique_id=363271531]
+layout_mode = 2
+size_flags_vertical = 1
+text = "1Day  23Hr 59Min"
+horizontal_alignment = 1
+vertical_alignment = 1

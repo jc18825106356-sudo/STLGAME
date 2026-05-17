@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c24h5nx4elvtg"]
+
+[ext_resource type="Script" uid="uid://beag528i47c3" path="res://scene/interactable/crafting_table.gd" id="1_oxtw0"]
+[ext_resource type="Texture2D" uid="uid://didk3j8bf1i0a" path="res://assets/tileset/spr_tileset_sunnysideworld_16px.png" id="2_oxtw0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxtw0"]
+size = Vector2(22, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvbbj"]
+size = Vector2(20, 7)
+
+[node name="CraftingTable" type="Area2D" unique_id=29258826]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_oxtw0")
+prompt = "Crafting"
+metadata/_custom_type_script = "uid://cd5heymq5uql7"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1739599206]
+texture = ExtResource("2_oxtw0")
+offset = Vector2(0, -5)
+region_enabled = true
+region_rect = Rect2(598, 288, 22, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=504565289]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_oxtw0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=282193675]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1018491416]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_lvbbj")

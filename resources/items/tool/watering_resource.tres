@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ToolResource" format=3 uid="uid://brab7ku4ibh0c"]
+
+[ext_resource type="Texture2D" uid="uid://bnq1v07p3csg8" path="res://assets/ui/water.png" id="1_vmrm1"]
+[ext_resource type="Script" uid="uid://bf4pld83v48k0" path="res://resources/items/tool/tool_resource.gd" id="2_2c0wi"]
+
+[resource]
+script = ExtResource("2_2c0wi")
+use_tool_animation = &"watering"
+hit_delay = 0.3
+id = 4
+item_name = "Watering"
+item_description = "This is Watering
+"
+item_icon = ExtResource("1_vmrm1")
+metadata/_custom_type_script = "uid://bf4pld83v48k0"

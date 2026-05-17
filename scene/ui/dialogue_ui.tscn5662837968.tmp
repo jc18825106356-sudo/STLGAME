@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://whpexvd785mo"]
+
+[ext_resource type="Theme" uid="uid://d337qmiy1w5qb" path="res://resources/ui_theme.tres" id="1_q4et8"]
+[ext_resource type="Script" uid="uid://73n6v1dxfy7v" path="res://scene/ui/dialogue_ui.gd" id="2_75ktm"]
+
+[node name="DialogueUI" type="Control" unique_id=1412507898]
+custom_minimum_size = Vector2(256, 165)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -470.0
+offset_right = 116.00049
+offset_bottom = -305.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_q4et8")
+script = ExtResource("2_75ktm")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1032927645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=849190504]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=676647697]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SpeakerNameLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=644642092]
+layout_mode = 2
+text = "Speaker"
+
+[node name="DialogueLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1074091206]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_vertical = 3
+text = "zheshiduihuakuang
+"
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1900428534]
+layout_mode = 2
+text = "Continue"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=676905326]
+visible = false
+layout_mode = 2

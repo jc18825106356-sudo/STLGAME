@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cqmx6jcyv8qgb"]
+
+[ext_resource type="Texture2D" uid="uid://vgl2jrrdwhqc" path="res://assets/crops/wood.png" id="1_3o7vt"]
+[ext_resource type="Script" uid="uid://dfrtfdjf46477" path="res://resources/items/item_resource.gd" id="1_n171r"]
+
+[resource]
+script = ExtResource("1_n171r")
+id = 11
+item_name = "Log"
+item_description = "This is Log."
+item_icon = ExtResource("1_3o7vt")
+max_stack_amount = 5
+metadata/_custom_type_script = "uid://dfrtfdjf46477"

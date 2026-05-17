@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://6hvyqslpx6n1"]
+
+[ext_resource type="FontFile" uid="uid://81fh5dluirdc" path="res://assets/fonts/Rockboxcond12.ttf" id="1_b471p"]
+[ext_resource type="Script" uid="uid://b0c0y663j1f7e" path="res://scene/ui/item_slout_ui.gd" id="1_clhe5"]
+[ext_resource type="Theme" uid="uid://d337qmiy1w5qb" path="res://resources/ui_theme.tres" id="1_injmo"]
+
+[node name="ItemSloutUI" type="Button" unique_id=786873617 node_paths=PackedStringArray("icon_texture", "amount_label")]
+custom_minimum_size = Vector2(32, 32)
+theme = ExtResource("1_injmo")
+script = ExtResource("1_clhe5")
+icon_texture = NodePath("TextureRect")
+amount_label = NodePath("AmountLabel")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=942702685]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 28.0
+offset_bottom = 28.0
+
+[node name="AmountLabel" type="Label" parent="." unique_id=1162029405]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_b471p")
+text = "99"

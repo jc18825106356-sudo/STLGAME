@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b6ihd1ub2mg2h"]
+
+[ext_resource type="Script" uid="uid://caci17dv6cvn4" path="res://scene/ui/equipement_ui.gd" id="1_odgl4"]
+[ext_resource type="PackedScene" uid="uid://6hvyqslpx6n1" path="res://scene/ui/item_slout_ui.tscn" id="2_odgl4"]
+
+[node name="EquipementUI" type="Control" unique_id=136941669 node_paths=PackedStringArray("item_slot_container")]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_odgl4")
+iu_id = 1
+item_slot_container = NodePath("MarginContainer/EquipmentSlotContainer")
+item_slot_ui_scene = ExtResource("2_odgl4")
+metadata/_custom_type_script = "uid://w5o5d4axa7rr"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2145639324]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="EquipmentSlotContainer" type="HBoxContainer" parent="MarginContainer" unique_id=949598166]
+layout_mode = 2

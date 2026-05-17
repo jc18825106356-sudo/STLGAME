@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://ctbg7v8fypear"]
+
+[ext_resource type="Texture2D" uid="uid://bcpo6py1oywy1" path="res://assets/crops/rock.png" id="1_hf3ms"]
+[ext_resource type="Script" uid="uid://dfrtfdjf46477" path="res://resources/items/item_resource.gd" id="2_yxtnk"]
+
+[resource]
+script = ExtResource("2_yxtnk")
+id = 12
+item_name = "Stone"
+item_description = "This is Stone."
+item_icon = ExtResource("1_hf3ms")
+max_stack_amount = 5
+metadata/_custom_type_script = "uid://dfrtfdjf46477"

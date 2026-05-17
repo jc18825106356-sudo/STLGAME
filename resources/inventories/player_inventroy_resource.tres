@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="InventoryResource" format=3 uid="uid://dfbsjyeo2lqww"]
+
+[ext_resource type="Script" uid="uid://l71cxem0ottr" path="res://resources/inventories/item_slot_resource.gd" id="1_lsjqn"]
+[ext_resource type="Script" uid="uid://dtcun6xm8qxfl" path="res://resources/inventories/inventory_resource.gd" id="2_daiag"]
+
+[sub_resource type="Resource" id="Resource_carrot"]
+script = ExtResource("1_lsjqn")
+item_id = 6
+item_amount = 5
+
+[sub_resource type="Resource" id="Resource_beetroot"]
+script = ExtResource("1_lsjqn")
+item_id = 7
+item_amount = 3
+
+[sub_resource type="Resource" id="Resource_lsjqn"]
+script = ExtResource("1_lsjqn")
+item_id = 5
+item_amount = 3
+metadata/_custom_type_script = "uid://l71cxem0ottr"
+
+[sub_resource type="Resource" id="Resource_qx54q"]
+script = ExtResource("1_lsjqn")
+item_id = 5
+item_amount = 2
+metadata/_custom_type_script = "uid://l71cxem0ottr"
+
+[resource]
+script = ExtResource("2_daiag")
+inventory_items = Array[ExtResource("1_lsjqn")]([SubResource("Resource_carrot"), SubResource("Resource_beetroot"), SubResource("Resource_lsjqn"), SubResource("Resource_qx54q")])
+metadata/_custom_type_script = "uid://dtcun6xm8qxfl"

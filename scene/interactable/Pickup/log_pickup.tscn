@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://62umik5lt0ic"]
+
+[ext_resource type="PackedScene" uid="uid://dmk6nyyu1gugu" path="res://scene/interactable/Pickup/pickup_template.tscn" id="1_44f50"]
+[ext_resource type="Texture2D" uid="uid://vgl2jrrdwhqc" path="res://assets/crops/wood.png" id="2_xmjbl"]
+
+[node name="LogPickup" unique_id=1340370150 instance=ExtResource("1_44f50")]
+item_id = 11
+prompt = "Pick up Log"
+
+[node name="Sprite2D" parent="." index="0" unique_id=1102384502]
+texture = ExtResource("2_xmjbl")

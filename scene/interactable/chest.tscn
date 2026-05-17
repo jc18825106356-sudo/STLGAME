@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c5xtw7n4la341"]
+
+[ext_resource type="Script" uid="uid://crfyr7iuw2wmg" path="res://scene/interactable/chest.gd" id="1_ajk2i"]
+[ext_resource type="Texture2D" uid="uid://didk3j8bf1i0a" path="res://assets/tileset/spr_tileset_sunnysideworld_16px.png" id="2_ajk2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajk2i"]
+size = Vector2(16, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbgeo"]
+size = Vector2(16, 11)
+
+[node name="Chest" type="Area2D" unique_id=1653527703]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_ajk2i")
+inventory_id = 2
+prompt = "Open Chest"
+metadata/_custom_type_script = "uid://cd5heymq5uql7"
+
+[node name="ChestClosed" type="Sprite2D" parent="." unique_id=757130012]
+texture = ExtResource("2_ajk2i")
+offset = Vector2(0, -7.5)
+region_enabled = true
+region_rect = Rect2(576, 476, 16, 24)
+
+[node name="ChestOpened" type="Sprite2D" parent="." unique_id=496433293]
+visible = false
+texture = ExtResource("2_ajk2i")
+offset = Vector2(0, -7.5)
+region_enabled = true
+region_rect = Rect2(592, 476, 16, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528858702]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ajk2i")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1232969081]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1675474268]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_gbgeo")

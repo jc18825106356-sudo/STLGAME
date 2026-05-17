@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ToolResource" format=3 uid="uid://b6htsjr2uuy5j"]
+
+[ext_resource type="Texture2D" uid="uid://f56t4njm2w3e" path="res://assets/ui/pickaxe.png" id="1_qe47d"]
+[ext_resource type="Script" uid="uid://bf4pld83v48k0" path="res://resources/items/tool/tool_resource.gd" id="2_rbg87"]
+
+[resource]
+script = ExtResource("2_rbg87")
+damage = 25
+use_tool_animation = &"pickaxe"
+id = 2
+item_name = "PickAxe"
+item_description = "This is PickAxe
+"
+item_icon = ExtResource("1_qe47d")
+metadata/_custom_type_script = "uid://bf4pld83v48k0"

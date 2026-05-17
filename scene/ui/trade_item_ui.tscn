@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cqbgoxx7a3j7"]
+
+[ext_resource type="Texture2D" uid="uid://bkpvaok6aoyi5" path="res://assets/ui/axe.png" id="1_aq1y5"]
+[ext_resource type="Script" uid="uid://dgbolcvdd8q2e" path="res://scene/ui/trade_item_ui.gd" id="1_pe27p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_esjy0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bq8aq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mg4fj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ggn2"]
+
+[node name="TradeItemUI" type="Button" unique_id=942173516 node_paths=PackedStringArray("icon_texture", "amount_label")]
+custom_minimum_size = Vector2(168, 24)
+script = ExtResource("1_pe27p")
+icon_texture = NodePath("MarginContainer/HBoxContainer/ItemIcon")
+amount_label = NodePath("MarginContainer/HBoxContainer/ItemAmountLabel")
+can_drop = false
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1561970268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=479341586]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1111409397]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_aq1y5")
+expand_mode = 1
+
+[node name="PriceLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1302651149]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Cost:999 "
+
+[node name="ItemAmountLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1213156622]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+text = "x999"
+
+[node name="MinusButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1856346187]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_esjy0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bq8aq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mg4fj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ggn2")
+text = "<"
+
+[node name="PurchasedAmountLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=790328595]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+text = "999"
+
+[node name="AddButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1077487580]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_esjy0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bq8aq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mg4fj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6ggn2")
+text = ">"

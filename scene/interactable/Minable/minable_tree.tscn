@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dh8djhqci8suy"]
+
+[ext_resource type="PackedScene" uid="uid://nmg6gh1fkbh3" path="res://scene/interactable/Minable/minable_template.tscn" id="1_jsppl"]
+[ext_resource type="Texture2D" uid="uid://c82k85yqncvd1" path="res://assets/environment/spr_deco_tree_01_strip4.png" id="2_wpgra"]
+[ext_resource type="PackedScene" uid="uid://dblxax6v73alw" path="res://scene/interactable/Minable/resource_spawner.tscn" id="3_rf8qs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wpgra"]
+radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf8qs"]
+size = Vector2(18, 13)
+
+[node name="MinableTree" unique_id=1734966789 instance=ExtResource("1_jsppl")]
+target_tools = Array[int]([1])
+prompt = "Cut Tree"
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1723711913]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_wpgra")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(66655542) index="0" unique_id=501175277]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_rf8qs")
+
+[node name="Sprite2D" parent="Sprites" parent_id_path=PackedInt32Array(1847220440) index="0" unique_id=1254075567]
+texture = ExtResource("2_wpgra")
+offset = Vector2(0, -10)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 34)
+
+[node name="ResourceSpawner" parent="ResourceSpawners" parent_id_path=PackedInt32Array(2074026906) index="0" unique_id=1878383247 instance=ExtResource("3_rf8qs")]
+position = Vector2(-4, -2)
+spawn_item_id = 11
+
+[node name="ResourceSpawner2" parent="ResourceSpawners" parent_id_path=PackedInt32Array(2074026906) index="1" unique_id=633209097 instance=ExtResource("3_rf8qs")]
+position = Vector2(4, -2)
+spawn_item_id = 11

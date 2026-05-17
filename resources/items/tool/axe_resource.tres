@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ToolResource" format=3 uid="uid://w0jvnoifunm0"]
+
+[ext_resource type="Script" uid="uid://bf4pld83v48k0" path="res://resources/items/tool/tool_resource.gd" id="1_b78va"]
+[ext_resource type="Texture2D" uid="uid://bkpvaok6aoyi5" path="res://assets/ui/axe.png" id="1_p7ktm"]
+
+[resource]
+script = ExtResource("1_b78va")
+damage = 25
+use_tool_animation = &"axe"
+id = 1
+item_name = "Axe"
+item_description = "This is Axe
+"
+item_icon = ExtResource("1_p7ktm")
+metadata/_custom_type_script = "uid://bf4pld83v48k0"

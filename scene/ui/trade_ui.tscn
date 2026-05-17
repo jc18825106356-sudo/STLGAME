@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://ferbj4vin0ij"]
+
+[ext_resource type="Theme" uid="uid://d337qmiy1w5qb" path="res://resources/ui_theme.tres" id="1_a8qxa"]
+[ext_resource type="Script" uid="uid://c01ec7ofkkkjt" path="res://scene/ui/trade_ui.gd" id="2_esjy0"]
+[ext_resource type="PackedScene" uid="uid://cqbgoxx7a3j7" path="res://scene/ui/trade_item_ui.tscn" id="3_bq8aq"]
+
+[node name="TradeUI" type="Control" unique_id=513487755 node_paths=PackedStringArray("item_slot_container")]
+custom_minimum_size = Vector2(196, 196)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -98.0
+offset_right = 98.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a8qxa")
+script = ExtResource("2_esjy0")
+iu_id = 2
+item_slot_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/ItemSlotsContainer")
+item_slot_ui_scene = ExtResource("3_bq8aq")
+metadata/_custom_type_script = "uid://w5o5d4axa7rr"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1039391156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=549415745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2045097012]
+layout_mode = 2
+
+[node name="CoinLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1059711275]
+layout_mode = 2
+text = "Coin:999"
+
+[node name="CostLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=155906098]
+layout_mode = 2
+text = "Cost:0"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=146360207]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="ItemSlotsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=28393748]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="BuyButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1705311923]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "买"

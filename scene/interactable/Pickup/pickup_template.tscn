@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dmk6nyyu1gugu"]
+
+[ext_resource type="Script" uid="uid://6c3fbf3v17hq" path="res://scene/interactable/Pickup/pickup_template.gd" id="1_p6v1d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p6v1d"]
+
+[node name="PickupTemplate" type="Area2D" unique_id=1340370150]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_p6v1d")
+prompt = "Pick up"
+metadata/_custom_type_script = "uid://cd5heymq5uql7"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1102384502]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715120292]
+shape = SubResource("CircleShape2D_p6v1d")

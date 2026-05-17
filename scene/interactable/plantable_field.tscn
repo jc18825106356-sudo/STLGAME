@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://drhs121jw7eh0"]
+
+[ext_resource type="Script" uid="uid://b2rb51hrh8r08" path="res://scene/interactable/plantable_field.gd" id="1_2v5y7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06r25"]
+size = Vector2(12, 12)
+
+[node name="PlantableField" type="Area2D" unique_id=2120297313]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_2v5y7")
+plantable_seeds = Array[int]([8, 9, 10])
+clear_tools = Array[int]([2])
+watering_tools = Array[int]([4])
+metadata/_custom_type_script = "uid://cd5heymq5uql7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1436505086]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_06r25")
+
+[node name="PlantedSprite" type="Sprite2D" parent="." unique_id=1864684548]
+
+[node name="HitDelayTimer" type="Timer" parent="." unique_id=74048079]
+one_shot = true

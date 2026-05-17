@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bdqhuedbd6dkv"]
+
+[ext_resource type="Script" uid="uid://4ebxuakhchlc" path="res://scene/interactable/merchant.gd" id="1_t71kb"]
+[ext_resource type="Texture2D" uid="uid://bv3d6ubjnrgl6" path="res://assets/player/spr_idle_strip9.png" id="2_wk5fo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r302g"]
+size = Vector2(12, 13)
+
+[node name="Merchant" type="Area2D" unique_id=1659566535]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_t71kb")
+inventory_id = 4
+merchant_name = "Merchant"
+dialogue_Lines = Array[String](["你好玩家！
+
+", "你想买什么"])
+dialogue_options = Array[String](["买", "卖", "关闭
+"])
+prompt = "Trade"
+metadata/_custom_type_script = "uid://cd5heymq5uql7"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2119019026]
+texture = ExtResource("2_wk5fo")
+offset = Vector2(0, -7)
+hframes = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=709199493]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_r302g")

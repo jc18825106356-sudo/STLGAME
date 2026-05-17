@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://c32owd8v86kl3"]
+
+[ext_resource type="Script" uid="uid://bkgj6h6pswux6" path="res://scene/interactable/enemy.gd" id="1_enemy"]
+[ext_resource type="Script" uid="uid://1bah8k007wub" path="res://components/health_component.gd" id="2_hc"]
+[ext_resource type="Script" uid="uid://daywy4etl2lmj" path="res://components/state_machine.gd" id="3_sm"]
+[ext_resource type="Script" uid="uid://c4tbkdcedl1j1" path="res://scene/interactable/interaction_proxy.gd" id="4_proxy"]
+[ext_resource type="Texture2D" uid="uid://bphwx3feiacnv" path="res://assets/orc/orc_regular_hair.png" id="5_tex"]
+[ext_resource type="PackedScene" uid="uid://dblxax6v73alw" path="res://scene/interactable/Minable/resource_spawner.tscn" id="6_rsp"]
+[ext_resource type="PackedScene" path="res://components/health_bar.tscn" id="7_hb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27gg3"]
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_27gg3"]
+
+[sub_resource type="CapsuleShape2D" id="Capsule_body"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="AtlasTexture" id="Atlas_60_20"]
+atlas = ExtResource("5_tex")
+region = Rect2(60, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="Atlas_80_20"]
+atlas = ExtResource("5_tex")
+region = Rect2(80, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="Atlas_100_20"]
+atlas = ExtResource("5_tex")
+region = Rect2(100, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="Atlas_120_20"]
+atlas = ExtResource("5_tex")
+region = Rect2(120, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="Atlas_140_20"]
+atlas = ExtResource("5_tex")
+region = Rect2(140, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27gg3"]
+atlas = ExtResource("5_tex")
+region = Rect2(160, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="Atlas_0_20"]
+atlas = ExtResource("5_tex")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="Atlas_20_20"]
+atlas = ExtResource("5_tex")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="Atlas_40_20"]
+atlas = ExtResource("5_tex")
+region = Rect2(40, 20, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_enemy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_60_20")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_80_20")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_100_20")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_120_20")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_140_20")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_140_20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27gg3")
+}],
+"loop": false,
+"name": &"death",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_60_20")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_0_20")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_0_20")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_20_20")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_40_20")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=920230289]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_enemy")
+target_tools = Array[int]([2, 1])
+prompt = "Cut Tree Monster"
+
+[node name="InteractionProxy" type="Area2D" parent="." unique_id=969835196]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_proxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionProxy" unique_id=636204790]
+rotation = -1.5707964
+scale = Vector2(2.265, 2.265)
+shape = SubResource("CircleShape2D_27gg3")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1159518780]
+script = ExtResource("2_hc")
+
+[node name="StateMachine" type="Node" parent="." unique_id=677544635]
+script = ExtResource("3_sm")
+
+[node name="DetectArea" type="Area2D" parent="." unique_id=1048247139]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea" unique_id=2045987081]
+rotation = -1.5707964
+shape = SubResource("SeparationRayShape2D_27gg3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2056951173]
+shape = SubResource("Capsule_body")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2138071248]
+sprite_frames = SubResource("SpriteFrames_enemy")
+animation = &"attack"
+frame_progress = 0.7981636
+offset = Vector2(0, -10)
+
+[node name="HitDelayTimer" type="Timer" parent="." unique_id=835302200]
+one_shot = true
+
+[node name="ResourceSpawners" type="Node2D" parent="." unique_id=797874266]
+
+[node name="ResourceSpawner" parent="ResourceSpawners" unique_id=1837258427 instance=ExtResource("6_rsp")]
+position = Vector2(-4, -2)
+spawn_item_id = 11
+
+[node name="ResourceSpawner2" parent="ResourceSpawners" unique_id=1115067539 instance=ExtResource("6_rsp")]
+position = Vector2(4, -2)
+spawn_item_id = 11
+
+[node name="HealthBar" parent="." unique_id=1333041819 instance=ExtResource("7_hb")]

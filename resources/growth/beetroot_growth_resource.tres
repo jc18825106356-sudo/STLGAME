@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="GrowthResource" format=3 uid="uid://c3a0jrsoyq38n"]
+
+[ext_resource type="Script" uid="uid://c88apw31il7oj" path="res://resources/growth/growth_stage_resource.gd" id="1_0h3oi"]
+[ext_resource type="Script" uid="uid://hy6ende8bujc" path="res://resources/time_resouce.gd" id="2_oabdx"]
+[ext_resource type="Script" uid="uid://d0rxcp5nj5hjv" path="res://resources/growth/growth_resource.gd" id="2_phy0e"]
+[ext_resource type="Texture2D" uid="uid://cerwuwhphbu31" path="res://assets/crops/beetroot_01.png" id="3_hbos1"]
+[ext_resource type="Texture2D" uid="uid://67iqf47kasbh" path="res://assets/crops/beetroot_02.png" id="4_oabdx"]
+[ext_resource type="Texture2D" uid="uid://cae2pnx72jam5" path="res://assets/crops/beetroot_03.png" id="5_hbos1"]
+[ext_resource type="Texture2D" uid="uid://duqm4hhl3w83x" path="res://assets/crops/beetroot_04.png" id="6_oabdx"]
+
+[sub_resource type="Resource" id="Resource_k1t12"]
+script = ExtResource("2_oabdx")
+minutes = 1
+metadata/_custom_type_script = "uid://hy6ende8bujc"
+
+[sub_resource type="Resource" id="Resource_p6p86"]
+script = ExtResource("1_0h3oi")
+growing_time = SubResource("Resource_k1t12")
+stage_sprite = ExtResource("3_hbos1")
+sprite_offset = Vector2(0, -1.5)
+metadata/_custom_type_script = "uid://c88apw31il7oj"
+
+[sub_resource type="Resource" id="Resource_crjmo"]
+script = ExtResource("2_oabdx")
+minutes = 1
+metadata/_custom_type_script = "uid://hy6ende8bujc"
+
+[sub_resource type="Resource" id="Resource_faclj"]
+script = ExtResource("1_0h3oi")
+growing_time = SubResource("Resource_crjmo")
+stage_sprite = ExtResource("4_oabdx")
+sprite_offset = Vector2(0, -2)
+metadata/_custom_type_script = "uid://c88apw31il7oj"
+
+[sub_resource type="Resource" id="Resource_oabdx"]
+script = ExtResource("2_oabdx")
+minutes = 1
+metadata/_custom_type_script = "uid://hy6ende8bujc"
+
+[sub_resource type="Resource" id="Resource_af350"]
+script = ExtResource("1_0h3oi")
+growing_time = SubResource("Resource_oabdx")
+stage_sprite = ExtResource("5_hbos1")
+sprite_offset = Vector2(0, -4.5)
+metadata/_custom_type_script = "uid://c88apw31il7oj"
+
+[sub_resource type="Resource" id="Resource_yayy5"]
+script = ExtResource("2_oabdx")
+metadata/_custom_type_script = "uid://hy6ende8bujc"
+
+[sub_resource type="Resource" id="Resource_xi7uo"]
+script = ExtResource("1_0h3oi")
+growing_time = SubResource("Resource_yayy5")
+stage_sprite = ExtResource("6_oabdx")
+sprite_offset = Vector2(0, -5)
+metadata/_custom_type_script = "uid://c88apw31il7oj"
+
+[resource]
+script = ExtResource("2_phy0e")
+seed_id = 8
+crop_id = 5
+growth_stages = Array[ExtResource("1_0h3oi")]([SubResource("Resource_p6p86"), SubResource("Resource_faclj"), SubResource("Resource_af350"), SubResource("Resource_xi7uo")])
+metadata/_custom_type_script = "uid://d0rxcp5nj5hjv"

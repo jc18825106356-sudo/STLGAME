@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dxu4g8n15yvy8"]
+
+[ext_resource type="Script" uid="uid://kag0hobm1ur4" path="res://scene/ui/craftable_item_ui.gd" id="1_ycs1l"]
+
+[node name="CraftableItemUI" type="PanelContainer" unique_id=409104639]
+custom_minimum_size = Vector2(80, 24)
+script = ExtResource("1_ycs1l")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=288919513]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1356079336]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1932016192]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1359493026]
+layout_mode = 2

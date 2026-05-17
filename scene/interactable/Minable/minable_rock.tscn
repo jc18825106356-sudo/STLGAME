@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dc5kvsedqi1tl"]
+
+[ext_resource type="PackedScene" uid="uid://nmg6gh1fkbh3" path="res://scene/interactable/Minable/minable_template.tscn" id="1_nb061"]
+[ext_resource type="Texture2D" uid="uid://didk3j8bf1i0a" path="res://assets/tileset/spr_tileset_sunnysideworld_16px.png" id="2_gnfpi"]
+[ext_resource type="PackedScene" uid="uid://dblxax6v73alw" path="res://scene/interactable/Minable/resource_spawner.tscn" id="3_pmj06"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmj06"]
+radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riyi2"]
+size = Vector2(22, 10)
+
+[node name="MinableRock" unique_id=1734966789 instance=ExtResource("1_nb061")]
+target_tools = Array[int]([2])
+prompt = "Mine Rock"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1723711913]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_pmj06")
+
+[node name="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(66655542) index="0" unique_id=501175277]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_riyi2")
+
+[node name="Sprite2D" parent="Sprites" parent_id_path=PackedInt32Array(1847220440) index="0" unique_id=1254075567]
+texture = ExtResource("2_gnfpi")
+offset = Vector2(0, -9.5)
+region_enabled = true
+region_rect = Rect2(820, 470, 24, 23)
+
+[node name="HitDelayTimer" parent="." index="4" unique_id=776682698]
+unique_name_in_owner = true
+
+[node name="ResourceSpawner" parent="ResourceSpawners" parent_id_path=PackedInt32Array(2074026906) index="0" unique_id=1878383247 instance=ExtResource("3_pmj06")]
+position = Vector2(-6, -5)
+spawn_item_id = 12
+
+[node name="ResourceSpawner2" parent="ResourceSpawners" parent_id_path=PackedInt32Array(2074026906) index="1" unique_id=1923317716 instance=ExtResource("3_pmj06")]
+position = Vector2(5, -5)
+spawn_item_id = 12
+
+[node name="ResourceSpawner3" parent="ResourceSpawners" parent_id_path=PackedInt32Array(2074026906) index="2" unique_id=1180080745 instance=ExtResource("3_pmj06")]
+position = Vector2(0, -12)
+spawn_item_id = 12

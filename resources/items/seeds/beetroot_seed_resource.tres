@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://85d54pvlnyk8"]
+
+[ext_resource type="Texture2D" uid="uid://ceb8l8olsfkv0" path="res://assets/crops/beetroot_00.png" id="1_q33r5"]
+[ext_resource type="Script" uid="uid://dfrtfdjf46477" path="res://resources/items/item_resource.gd" id="1_sk6x1"]
+
+[resource]
+script = ExtResource("1_sk6x1")
+id = 8
+item_name = "Beetroot Seed"
+item_description = "This is a Beertoot Seed
+"
+item_icon = ExtResource("1_q33r5")
+max_stack_amount = 10
+metadata/_custom_type_script = "uid://dfrtfdjf46477"

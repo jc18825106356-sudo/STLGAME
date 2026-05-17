@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CraftingResource" format=3 uid="uid://day8yjr4cmkq8"]
+
+[ext_resource type="Script" uid="uid://by1pab23gqmff" path="res://resources/items/craftables/crafting_material_resource.gd" id="1_pxkmg"]
+[ext_resource type="Script" uid="uid://2ninq5mfeol2" path="res://resources/items/craftables/crafting_resource.gd" id="2_3bxdq"]
+
+[sub_resource type="Resource" id="Resource_w1n50"]
+script = ExtResource("1_pxkmg")
+item_id = 11
+amount = 2
+metadata/_custom_type_script = "uid://by1pab23gqmff"
+
+[sub_resource type="Resource" id="Resource_7b3xj"]
+script = ExtResource("1_pxkmg")
+item_id = 12
+metadata/_custom_type_script = "uid://by1pab23gqmff"
+
+[resource]
+script = ExtResource("2_3bxdq")
+craftable_item_id = 1
+requirements = Array[ExtResource("1_pxkmg")]([SubResource("Resource_w1n50"), SubResource("Resource_7b3xj")])
+metadata/_custom_type_script = "uid://2ninq5mfeol2"

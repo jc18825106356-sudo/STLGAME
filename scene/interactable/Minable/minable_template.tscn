@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://nmg6gh1fkbh3"]
+
+[ext_resource type="Script" uid="uid://c1yoyrhs55ls2" path="res://scene/interactable/Minable/minable_template.gd" id="1_rm1kt"]
+[ext_resource type="Script" uid="uid://1bah8k007wub" path="res://components/health_component.gd" id="2_hc"]
+[ext_resource type="PackedScene" path="res://components/health_bar.tscn" id="3_tfw11"]
+
+[node name="MinableTemplate" type="Area2D" unique_id=1734966789]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_rm1kt")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=341338616]
+script = ExtResource("2_hc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723711913]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=66655542]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=501175277]
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1847220440]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites" unique_id=1254075567]
+
+[node name="HitDelayTimer" type="Timer" parent="." unique_id=776682698]
+one_shot = true
+
+[node name="ResourceSpawners" type="Node2D" parent="." unique_id=2074026906]
+
+[node name="HealthBar" parent="." unique_id=176369920 instance=ExtResource("3_tfw11")]
+visible = false

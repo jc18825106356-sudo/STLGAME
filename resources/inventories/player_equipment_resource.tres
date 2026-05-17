@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="InventoryResource" format=3 uid="uid://bb6d0fbh1rq1n"]
+
+[ext_resource type="Script" uid="uid://l71cxem0ottr" path="res://resources/inventories/item_slot_resource.gd" id="1_gln4q"]
+[ext_resource type="Script" uid="uid://dtcun6xm8qxfl" path="res://resources/inventories/inventory_resource.gd" id="2_r5hoi"]
+
+[sub_resource type="Resource" id="Resource_gln4q"]
+script = ExtResource("1_gln4q")
+item_id = 1
+item_amount = 1
+metadata/_custom_type_script = "uid://l71cxem0ottr"
+
+[sub_resource type="Resource" id="Resource_r5hoi"]
+script = ExtResource("1_gln4q")
+item_id = 2
+item_amount = 1
+metadata/_custom_type_script = "uid://l71cxem0ottr"
+
+[sub_resource type="Resource" id="Resource_a7rqw"]
+script = ExtResource("1_gln4q")
+item_id = 4
+item_amount = 1
+metadata/_custom_type_script = "uid://l71cxem0ottr"
+
+[sub_resource type="Resource" id="Resource_g42he"]
+script = ExtResource("1_gln4q")
+item_id = 8
+item_amount = 4
+metadata/_custom_type_script = "uid://l71cxem0ottr"
+
+[resource]
+script = ExtResource("2_r5hoi")
+inventory_id = 1
+inventory_capacity = 6
+inventory_items = Array[ExtResource("1_gln4q")]([SubResource("Resource_gln4q"), SubResource("Resource_r5hoi"), SubResource("Resource_a7rqw"), SubResource("Resource_g42he")])
+metadata/_custom_type_script = "uid://dtcun6xm8qxfl"

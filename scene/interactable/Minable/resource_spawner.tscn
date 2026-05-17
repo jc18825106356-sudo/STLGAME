@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dblxax6v73alw"]
+
+[ext_resource type="Script" uid="uid://d218ckbggp6u1" path="res://scene/interactable/Minable/resource_spawner.gd" id="1_bpwr0"]
+
+[node name="ResourceSpawner" type="Node2D" unique_id=1878383247]
+script = ExtResource("1_bpwr0")

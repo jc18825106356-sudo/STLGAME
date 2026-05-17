@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://mttwyheujxxg"]
+
+[ext_resource type="PackedScene" uid="uid://dmk6nyyu1gugu" path="res://scene/interactable/Pickup/pickup_template.tscn" id="1_uyvhm"]
+[ext_resource type="Texture2D" uid="uid://bcpo6py1oywy1" path="res://assets/crops/rock.png" id="2_up1rw"]
+
+[node name="StonePickup" unique_id=1340370150 instance=ExtResource("1_uyvhm")]
+item_id = 12
+prompt = "Pick up stone"
+
+[node name="Sprite2D" parent="." index="0" unique_id=1102384502]
+texture = ExtResource("2_up1rw")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://cwsgc8oixg6r"]
+
+[ext_resource type="Texture2D" uid="uid://dta3bajd63nlj" path="res://assets/crops/cabbage_05.png" id="1_dlwlk"]
+[ext_resource type="Script" uid="uid://dfrtfdjf46477" path="res://resources/items/item_resource.gd" id="1_icsxq"]
+
+[resource]
+script = ExtResource("1_icsxq")
+id = 5
+item_name = "卷心菜"
+item_description = "这是卷心菜"
+item_icon = ExtResource("1_dlwlk")
+max_stack_amount = 5
+metadata/_custom_type_script = "uid://dfrtfdjf46477"
