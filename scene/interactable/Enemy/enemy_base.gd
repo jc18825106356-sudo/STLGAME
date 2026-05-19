@@ -8,6 +8,12 @@ class_name EnemyBase extends CharacterBody2D
 @export var attack_damage: int = 10
 @export var attack_cooldown: float = 1.5
 @export var patrol_distance: float = 48.0
+## 巡逻路线点集，每个 Vector2 是相对于敌人出生点的偏移量。为空时使用 patrol_distance 往返巡逻
+@export var patrol_points: Array[Vector2] = []
+## 巡逻模式：true=首尾循环，false=来回折返
+@export var patrol_loop: bool = true
+## 追击最大距离（拴绳范围），超过此距离敌人放弃追击返回巡逻
+@export var leash_distance: float = 200.0
 @export var prompt: String = ""
 
 @onready var health_component: HealthComponent = $HealthComponent
@@ -20,6 +26,8 @@ class_name EnemyBase extends CharacterBody2D
 var _player: CharacterBody2D
 var _start_position: Vector2
 var _patrol_direction: int = 1
+var _patrol_index: int = 0
+var _patrol_forward: bool = true
 var _attack_timer: float = 0.0
 var _idle_timer: float = 0.0
 
@@ -73,12 +81,12 @@ func interactor(player: CharacterBody2D) -> void:
 		health_component.take_damage(_get_interaction_damage(player))
 		if not health_component.is_dead():
 			state_machine.transition_to("hurt")
-		await player.animated_sprite_2d.animation_finished
+		await EventSystem.interaction_animation_finished
 		EventSystem.end_interaction()
 
 func _on_interaction_start(player: CharacterBody2D) -> void:
 	var tool: ToolResource = ItemData.get_item_resource(player.equipped_item)
-	player.animated_sprite_2d.play(tool.use_tool_animation)
+	EventSystem.request_interaction_animation(tool.use_tool_animation, tool.hit_delay)
 	hit_delay_timer.start(tool.hit_delay)
 	await hit_delay_timer.timeout
 
@@ -105,7 +113,7 @@ func _on_health_depleted() -> void:
 	state_machine.transition_to("death")
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body.has_method("take_enemy_damage"):
 		_player = body
 
 func _on_body_exited(body: Node2D) -> void:
@@ -139,15 +147,54 @@ func _process_idle(_delta: float) -> void:
 ## patrol
 func _enter_patrol() -> void:
 	animated_sprite_2d.play("run")
-	velocity.x = move_speed * _patrol_direction
-	_face_movement()
+	if patrol_points.is_empty():
+		velocity.x = move_speed * _patrol_direction
+		_face_movement()
+		return
+	_patrol_index = 0
+	_patrol_forward = true
+	_move_toward_patrol_point()
 
 func _process_patrol(_delta: float) -> void:
-	velocity.x = move_speed * _patrol_direction
-	if abs(global_position.x - _start_position.x) > patrol_distance:
-		_patrol_direction *= -1
+	if patrol_points.is_empty():
 		velocity.x = move_speed * _patrol_direction
-	_face_movement()
+		if abs(global_position.x - _start_position.x) > patrol_distance:
+			_patrol_direction *= -1
+			velocity.x = move_speed * _patrol_direction
+		_face_movement()
+		return
+	var target := _get_current_patrol_target()
+	var dist := global_position.distance_to(target)
+	if dist < 4.0:
+		_advance_patrol_point()
+		_move_toward_patrol_point()
+	_face_pos(target)
+
+## 朝当前巡逻点移动
+func _move_toward_patrol_point() -> void:
+	var target := _get_current_patrol_target()
+	var dir := (target - global_position).normalized()
+	velocity = dir * move_speed
+
+## 获取当前巡逻目标的世界坐标
+func _get_current_patrol_target() -> Vector2:
+	if patrol_points.is_empty():
+		return _start_position + Vector2(patrol_distance * _patrol_direction, 0)
+	return _start_position + patrol_points[_patrol_index]
+
+## 前进到下一个巡逻点，根据 patrol_loop 决定循环或折返
+func _advance_patrol_point() -> void:
+	if patrol_loop:
+		_patrol_index = (_patrol_index + 1) % patrol_points.size()
+		return
+	if _patrol_forward:
+		_patrol_index += 1
+		if _patrol_index >= patrol_points.size() - 1:
+			_patrol_forward = false
+	else:
+		_patrol_index -= 1
+		if _patrol_index <= 0:
+			_patrol_forward = true
 
 ## chase
 func _enter_chase() -> void:
@@ -162,7 +209,7 @@ func _process_chase(_delta: float) -> void:
 		velocity = Vector2.ZERO
 		state_machine.transition_to("attack")
 		return
-	if dist > detection_radius * 1.5:
+	if dist > detection_radius * 1.5 or global_position.distance_to(_start_position) > leash_distance:
 		state_machine.transition_to("patrol")
 		return
 	var dir_to_player = (_player.global_position - global_position).normalized()
@@ -184,7 +231,7 @@ func _process_attack(_delta: float) -> void:
 		return
 	_face_pos(_player.global_position)
 	if _attack_timer <= 0:
-		(_player as Player).health_component.take_damage(attack_damage)
+		EventSystem.on_enemy_attack(attack_damage)
 		_attack_timer = attack_cooldown
 
 ## hurt

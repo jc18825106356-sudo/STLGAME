@@ -22,6 +22,12 @@ signal dialogue_finished()
 signal dialogue_option_selected(option_idx: int)
 ## 信号：保存数据
 signal data_save()
+## 信号：敌人攻击命中目标，携带伤害值。任何持有 HealthComponent 的场景都可监听
+signal enemy_attack_hit(damage: int)
+## 信号：请求播放交互动画，携带动画名称和伤害判定延迟。接收方自行处理动画播放
+signal interaction_animation_request(animation: String, hit_delay: float)
+## 信号：交互动画播放完成。Player 动画结束后发射，敌人监听后结束交互
+signal interaction_animation_finished()
 
 ## 显示交互提示，供 UI 接收并显示
 func show_interact_prompt(prompt: String) -> void:
@@ -58,3 +64,11 @@ func select_dialogue_option(option_idx: int) -> void:
 ## 触发全局保存
 func save_data() -> void:
 	data_save.emit()
+
+## 敌人攻击命中，携带伤害值。Player 等场景监听此信号自行扣血
+func on_enemy_attack(damage: int) -> void:
+	enemy_attack_hit.emit(damage)
+
+## 请求播放交互动画，携带动画名称和判定延迟。接收方自行播放并返回
+func request_interaction_animation(animation: String, hit_delay: float) -> void:
+	interaction_animation_request.emit(animation, hit_delay)

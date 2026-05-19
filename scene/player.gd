@@ -19,6 +19,8 @@ func _ready() -> void:
 	InventorySystem.inventories_loaded.connect(_on_inventories_loaded)
 	EventSystem.interaction_started.connect(_on_interaction_started)
 	EventSystem.interaction_ended.connect(_on_interaction_ended)
+	EventSystem.enemy_attack_hit.connect(_on_enemy_attack_hit)
+	EventSystem.interaction_animation_request.connect(_on_interaction_animation_request)
 	EventSystem.data_save.connect(save_data)
 	load_data()
 
@@ -84,6 +86,21 @@ func _on_interaction_ended() -> void:
 	set_process(true)
 	set_process_input(true)
 	animated_sprite_2d.play("idle")
+
+## 敌人攻击命中回调：对自身造成伤害。符合 Duck Typing，任何持有 HealthComponent 的角色都可连接此信号
+func _on_enemy_attack_hit(damage: int) -> void:
+	health_component.take_damage(damage)
+
+## 交互动画请求回调：播放工具使用动画，动画结束后通知敌人交互完成
+func _on_interaction_animation_request(animation: String, _hit_delay: float) -> void:
+	animated_sprite_2d.play(animation)
+	await animated_sprite_2d.animation_finished
+	EventSystem.interaction_animation_finished.emit()
+
+## Duck Typing 方法：敌人通过 has_method("take_enemy_damage") 检测目标是否可被攻击，
+## 而非使用 is Player 硬类型判断。任何实现此方法的角色都可被敌人追踪和攻击
+func take_enemy_damage(_damage: int) -> void:
+	pass
 
 ## 保存玩家数据到 user:// 目录
 func save_data() -> void:
